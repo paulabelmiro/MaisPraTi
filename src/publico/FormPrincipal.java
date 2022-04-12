@@ -1,6 +1,7 @@
 package publico;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import modelos.Pessoa;
@@ -24,7 +25,7 @@ public class FormPrincipal {
 
             System.out.println("Digite a opção desejada:");
             System.out.println("1 -Adicionar Cadastro");
-            System.out.println("2 -Alterar Cadastro");
+            System.out.println("2 -Excluir Cadastro");
             System.out.println("3 -Lista Cadastros");
             System.out.println("4 -Sair");
 
@@ -46,13 +47,26 @@ public class FormPrincipal {
                 novaPessoa.setDataAtual(now());
                 pessoa.add(novaPessoa);
                 System.out.println("Cadastro adicionado com sucesso!");}
+            if (opcao == 2){ exclCad();}
             if (opcao == 3){
                 System.out.println(pessoa);
             }
         }
     }
 
-    //private void AddCad(int codCad){}
-
+    public void exclCad(){
+        Scanner cadastro = new Scanner(System.in);
+        Iterator<Pessoa> i = pessoa.iterator();
+        System.out.println("Digite o código do cadastro que deseja excluir:");
+        int altCod = scanner.nextInt();
+        while(i.hasNext()){
+            Pessoa alt = i.next();
+            if(alt.getId() == altCod){
+                i.remove();
+            }
+        }
+        System.out.println("Cadastro "+altCod + " excluído com sucesso!");
+        }
     }
+
 
